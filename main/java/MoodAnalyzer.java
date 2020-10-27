@@ -1,5 +1,3 @@
-
-
 public class MoodAnalyzer {
 
     private String message;
@@ -13,13 +11,17 @@ public class MoodAnalyzer {
         this.message = message;
     }
 
-    /**
-     * Method To Analyze Mood
-     * @return Mood
-     * Refactored: Removed message parameter
-     */
+    
+     //Method To Analyze Mood
+     //@return Mood
+     //Refactored: Removed message parameter
+     
     public String analyzeMood() {
-        return message.contains("Sad") ? "SAD" : "HAPPY";
+        try{
+        	return message.contains("Sad") ? "SAD" : "HAPPY";
+        } catch (NullPointerException e) {
+            return "Happy";
+        }
     }
 }
 
