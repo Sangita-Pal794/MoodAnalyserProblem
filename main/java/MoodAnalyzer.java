@@ -14,13 +14,17 @@ public class MoodAnalyzer {
     
      //Method To Analyze Mood
      //@return Mood
-     //Refactored: Removed message parameter
+     
      
     public String analyzeMood() {
         try{
-        	return message.contains("Sad") ? "SAD" : "HAPPY";
+        	// If message is Empty throwing Custom Exception
+            if (message.length() == 0) {
+                throw new MoodAnalyzerException(MoodAnalyzerException.ExceptionType.EMPTY, "Empty Mood");
+            }
+              return message.contains("Sad") ? "SAD" : "HAPPY";
         } catch (NullPointerException e) {
-            return "Happy";
+        	throw new MoodAnalyzerException(MoodAnalyzerException.ExceptionType.NULL, "Happy");
         }
     }
 }
