@@ -42,4 +42,17 @@ public class MoodAnalyzerTest {
         mood = moodCheck.analyzeMood();
         Assert.assertThat(mood, CoreMatchers.is("Happy"));
     }
+    
+    //Test for Exception Handling: Empty Message
+    
+    @Test
+    public void testMoodIfEmptyReturnsEmptyMood() {
+        moodCheck = new MoodAnalyzer("");
+        try {
+            mood = moodCheck.analyzeMood();
+        } catch (MoodAnalyzerException e) {
+            Assert.assertEquals("Empty Mood", e.getMessage());
+            Assert.assertEquals(MoodAnalyzerException.ExceptionType.EMPTY, e.type);
+        }
+    }
 }
